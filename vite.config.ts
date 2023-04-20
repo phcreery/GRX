@@ -29,11 +29,15 @@ export default defineConfig(({ command }) => {
           },
           vite: {
             build: {
+              target: "ESNext",
               sourcemap,
               minify: isBuild,
               outDir: 'dist-electron/main',
               rollupOptions: {
                 external: Object.keys('dependencies' in pkg ? pkg.dependencies : {}),
+                // output: {
+                //   format: 'cjs'
+                // }
               },
             },
           },
@@ -47,11 +51,15 @@ export default defineConfig(({ command }) => {
           },
           vite: {
             build: {
+              target: "ESNext",
               sourcemap: sourcemap ? 'inline' : undefined, // #332
               minify: isBuild,
               outDir: 'dist-electron/preload',
               rollupOptions: {
                 external: Object.keys('dependencies' in pkg ? pkg.dependencies : {}),
+                // output: {
+                //   format: 'cjs'
+                // }
               },
             },
           },
@@ -68,5 +76,12 @@ export default defineConfig(({ command }) => {
       }
     })(),
     clearScreen: false,
+    optimizeDeps: {
+      // from: [vite] new dependencies found: ...
+      include: [
+        '@hpcreery/tracespace-parser', '@hpcreery/tracespace-plotter', '@pixi/webworker', '@pixi-essentials/cull', 'tess2-ts'
+      ],
+      exclude: ['path', 'fs', 'os', 'perf_hooks', 'util', 'asset', 'electron', 'y18n'],
+    },
   }
 })

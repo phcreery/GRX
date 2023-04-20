@@ -4,8 +4,7 @@
   "description": "PWB Renderer",
   "author": "Hunter Creery",
   "private": true,
-  "main": "src/electron/electron.bundle.cjs",
-  "type": "module",
+  "main": "dist-electron/main/index.js",
   "debug": {
     "env": {
       "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
@@ -78,18 +77,6 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
     ]
   }
 }

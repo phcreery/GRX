@@ -6,9 +6,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
+    "moduleResolution": "node",
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
@@ -20,6 +18,8 @@
     "noFallthroughCasesInSwitch": true,
 
     "allowJs": true,
+    "useDefineForClassFields": true,
+    "esModuleInterop": true,
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -274,7 +274,7 @@ export function UIElements() {
           height: '100vh',
           position: 'fixed',
           pointerEvents: 'none',
-          zIndex: 10,
+          zIndex: 11,
         }}>
         <LayerSidebar gerberApp={gerberApp} />
         <Toolbar gerberApp={gerberApp} />
