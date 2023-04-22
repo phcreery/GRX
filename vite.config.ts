@@ -1,6 +1,6 @@
 import { rmSync } from 'node:fs'
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import vue from '@vitejs/plugin-vue'
 import electron from 'vite-plugin-electron'
 import renderer from 'vite-plugin-electron-renderer'
 import pkg from './package.json'
@@ -15,7 +15,7 @@ export default defineConfig(({ command }) => {
 
   return {
     plugins: [
-      react(),
+      vue(),
       electron([
         {
           // Main-Process entry file of the Electron App.
@@ -29,15 +29,11 @@ export default defineConfig(({ command }) => {
           },
           vite: {
             build: {
-              target: "ESNext",
               sourcemap,
               minify: isBuild,
               outDir: 'dist-electron/main',
               rollupOptions: {
                 external: Object.keys('dependencies' in pkg ? pkg.dependencies : {}),
-                // output: {
-                //   format: 'cjs'
-                // }
               },
             },
           },
@@ -51,15 +47,11 @@ export default defineConfig(({ command }) => {
           },
           vite: {
             build: {
-              target: "ESNext",
               sourcemap: sourcemap ? 'inline' : undefined, // #332
               minify: isBuild,
               outDir: 'dist-electron/preload',
               rollupOptions: {
                 external: Object.keys('dependencies' in pkg ? pkg.dependencies : {}),
-                // output: {
-                //   format: 'cjs'
-                // }
               },
             },
           },
@@ -76,12 +68,5 @@ export default defineConfig(({ command }) => {
       }
     })(),
     clearScreen: false,
-    optimizeDeps: {
-      // from: [vite] new dependencies found: ...
-      include: [
-        '@hpcreery/tracespace-parser', '@hpcreery/tracespace-plotter', '@pixi/webworker', '@pixi-essentials/cull', 'tess2-ts'
-      ],
-      exclude: ['path', 'fs', 'os', 'perf_hooks', 'util', 'asset', 'electron', 'y18n'],
-    },
   }
 })

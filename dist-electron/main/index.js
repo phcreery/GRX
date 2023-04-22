@@ -37,7 +37,7 @@ async function createWindow() {
     win.loadFile(indexHtml);
   }
   win.webContents.on("did-finish-load", () => {
-    win?.webContents.send("main-process-message", (/* @__PURE__ */ new Date()).toLocaleString());
+    win == null ? void 0 : win.webContents.send("main-process-message", (/* @__PURE__ */ new Date()).toLocaleString());
   });
   win.webContents.setWindowOpenHandler(({ url: url2 }) => {
     if (url2.startsWith("https:"))

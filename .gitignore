@@ -1,27 +1,3 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
-node_modules
-
-# testing
-coverage
-**/jobs
-**/rawgerbers
-**/artwork
-
-# production
-frontend/GRX**
-discard**
-
-# misc
-.DS_Store
-.env
-.env.development
-.env.production
-npm-debug.log
-package-lock.json
-.idea
-
 # Logs
 logs
 *.log
@@ -31,10 +7,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# dist
-# dist-ssr
-# dist-electron
-# release
+node_modules
+dist
+dist-ssr
+dist-electron
+release
 *.local
 
 # Editor directories and files
