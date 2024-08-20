@@ -4,15 +4,14 @@ import dxfPluginWorker from '@lib/dxf?worker'
 import ncPluginWorker from '@lib/nc?worker'
 import { LayerProps, ShapeProps } from './layer'
 import * as Comlink from 'comlink'
-import { TMessageLevel } from './engine'
 
-export interface AddLayerProps extends ShapeProps, LayerProps {}
+export interface AddLayerProps extends ShapeProps, LayerProps { }
 
 export type Plugin = (
   buffer: ArrayBuffer,
   props: Partial<AddLayerProps>,
   addLayer: (params: AddLayerProps) => void,
-  addMessage?: (level: TMessageLevel, title: string, message: string) => Promise<void>
+  addMessage?: (title: string, message: string) => Promise<void>
 ) => Promise<void>
 
 export interface PluginsDefinition {

@@ -379,10 +379,10 @@ export class RenderEngineBackend {
         uniforms: {
           u_Color: (context: REGL.DefaultContext & WorldContext) => {
             const color = vec4.create()
-            vec4.subtract(color, [1,1,1,1], context.settings.BACKGROUND_COLOR)
+            vec4.subtract(color, [1, 1, 1, 1], context.settings.BACKGROUND_COLOR)
             color[3] = 1
             return color
-            },
+          },
         }
       },
     )
@@ -608,9 +608,9 @@ export class RenderEngineBackend {
       const tempUID = UID()
       this.layersQueue.push({ name: params.props.name || '', uid: tempUID })
       const addLayerCallback = async (params: AddLayerProps): Promise<void> => await this.addLayer({ ...params, format: params.format })
-      const addMessageCallback = async (level: TMessageLevel, title: string, message: string): Promise<void> => {
+      const addMessageCallback = async (title: string, message: string): Promise<void> => {
         // await notifications.show({title, message})
-        this.addMessage({ level, title, message })
+        this.addMessage({ level: MessageLevel.WARN, title, message })
       }
       const instance = new pluginWorker()
       const parser = Comlink.wrap<Plugin>(instance)
